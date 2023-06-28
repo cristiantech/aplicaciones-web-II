@@ -4,7 +4,7 @@
   "description": "Fundamentos de NODEJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "keywords": [
     "NODEJS",
@@ -12,5 +12,9 @@
     "npm"
   ],
   "author": "Cristian Muñoz <cristiand.munozt@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "express": "^4.18.2"
+  }
 }
