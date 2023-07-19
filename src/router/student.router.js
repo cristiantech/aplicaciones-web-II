@@ -1,37 +1,21 @@
 const express = require('express');
-
+const Student = require('../services/student.service');
 const router = express.Router();
 
+const service = new Student();
+
+// Find All Studente
 router.get("/", (req, res) => {
-  res.json([{
-    student_id: 1010,
-    firstName: "Cristian",
-    Lastname: "Muñoz",
-    mail: "cristian.munoz@iti.edu.ec"
-  },{
-    student_id: 1010,
-    firstName: "Suldery",
-    Lastname: "Arellano",
-    mail: "suldery.arellano@iti.edu.ec"
-  }
-]);
+  const allStudent = service.find();
+  res.json(allStudent);
 })
 
-// Get un Elmento
+// Find one student
 router.get("/:id", (req, res) => {
-  const {id} = req.params;
-  if (id === "999") {
-    res.status(404).json({
-      message: "404 not found",
-
-    });
-  }
-  res.json({
-    student_id: id,
-    firstName: "Suldery",
-    Lastname: "Arellano",
-    mail: "suldery.arellano@iti.edu.ec"
-  });
+    const {id} = req.params;
+    const oneStudent = service.findOne(parseInt(id));
+    console.log(id)
+    res.json(oneStudent);
 })
 
 router.post('/', (req, res) => {
@@ -43,8 +27,8 @@ router.post('/', (req, res) => {
 });
 
 router.patch('/:id', (req, res) => {
-  const {id} = req.params;
-  const body = req.body;
+  const {id} = req.params; // index de mi lista
+  const body = req.body; // los cambios a implementar
   res.json({
     message: "Update",
     data: body,

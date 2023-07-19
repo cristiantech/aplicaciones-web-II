@@ -1,21 +1,20 @@
 // Lammar a la instanacia de express
 const express = require("express");
-const apiRouter = require("./src/router");
+const ApiRouter = require("./src/router");
 // Creando la aplicación en express
 const app = express();
 const port = 3006;
 
 app.use(express.json());
 
-//Routing
+//Path home
 app.get("/", (req, res) => {
-   res.send("Hola Mundo");
+   res.send("Bienvenidos a aplicaciones web II");
 });
 
 
 
-
-apiRouter(app);
+ApiRouter(app);
 
 // Lisening
 app.listen(port, () => {
